@@ -58,15 +58,15 @@
 
       <!-- Your IMU's yaw, once the magentic_declination_radians value is added to it, should
            report 0 when facing east. If it doesn't, enter the offset here. Defaults to 0. -->
-      <param name="yaw_offset" value="0"/>
+      <param name="yaw_offset" value="-13"/>
 
       <!-- If this is true, the altitude is set to 0 in the output odometry message. Defaults
            to false. -->
-      <param name="zero_altitude" value="false"/>
+      <param name="zero_altitude" value="true"/>
 
       <!-- If this is true, the transform world_frame->utm transform is broadcast
            for use by other nodes. Defaults to false. -->
-      <param name="broadcast_utm_transform" value="false"/>
+      <param name="broadcast_utm_transform" value="true"/>
 
       <!-- If this is true, all received odometry data is converted back to a lat/lon
            and published as a NavSatFix message as /gps/filtered. Defaults to false. -->
@@ -95,13 +95,14 @@
       The fields in the parameter represent latitude and longitude in decimal degrees,
       and heading in radians. As navsat_transform_node assumes an ENU standard, a 0
       heading corresponds to east. -->
-      <rosparam param="datum">[55.944904, -3.186693, 0.0, map, base_link]</rosparam>
+      <!-- rosparam param="datum">[55.944904, -3.186693, 0.0, map, base_link]</rosparam -->
 
       <!-- Placeholders for input remapping. Set your topic names as the "to" values.
-      <remap from="/imu/data" to=""/>
-      <remap from="/odometry/filtered" to=""/>
       <remap from="/gps/fix" to=""/>
       -->
+      <remap from="/imu/data" to="/imu/raw"/>
+      <remap from="/odometry/filtered" to="/odom"/>
+      
 
       <!-- Placeholders for output remapping.
       <remap from="/odometry/gps" to=""/>
