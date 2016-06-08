@@ -160,7 +160,7 @@ namespace RobotLocalization
       }
     }
 
-    ros::Subscriber odom_sub = nh.subscribe("odometry/filtered", 1, &NavSatTransform::odomCallback, this);
+    ros::Subscriber odom_sub = nh.subscribe("/odom", 1, &NavSatTransform::odomCallback, this);
     ros::Subscriber gps_sub = nh.subscribe("gps/fix", 1, &NavSatTransform::gpsFixCallback, this);
     ros::Subscriber imu_sub;
 
